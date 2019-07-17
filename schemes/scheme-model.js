@@ -26,6 +26,9 @@ function remove(id) {
  return db('schemes').where({ id }).delete();
 }
 
+function addStep(step, scheme_id) {
+  return db('steps').insert({ step_number: step.step_number, instructions: step.instructions, scheme_id: scheme_id  });
+}
 
 module.exports = {
   find,
@@ -33,6 +36,6 @@ module.exports = {
   findSteps,
   add,
   update,
-  remove
-
+  remove,
+  addStep
 };
