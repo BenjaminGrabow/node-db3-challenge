@@ -11,7 +11,6 @@ from orders as o join shippers as s on o.shipperid = s.shipperid
 where o.orderdate < '1997-01-09'
 
 ### Display all ProductNames and Quantities placed on order 10251. Sort by ProductName. Shows 3 records.
---Display all ProductNames and Quantities placed on order 10251. Sort by ProductName. Shows 3 records.
 SELECT 
 	p.productname,
 	o.orderid
@@ -38,9 +37,10 @@ group by c.categoryname
 
 ### Gabes extra challenges
 ###Find the number of shipments by each shipper
-SELECT shippername, count(orderid) from shippers as s
+SELECT shippername, count(orderid) as numOfOrders from shippers as s
 join orders as o on o.shipperid = s.shipperid
-group by shippername; Find the category that brings in the most revenue
+group by shippername
+order by numOfOrders desc;
 
 ###Find the top 5 best performing employees measured in number of orders
 select firstname, count(orderid) as Count from employees as e left join orders as o on o.employeeid = e.employeeid
